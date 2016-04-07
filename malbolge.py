@@ -1,5 +1,5 @@
 import random
-keyBase = 'abcdefghijklmnopqrstuvwxyz'
+keyBase = 'abcdefghijklmnopqrstuvwxyz0123456789'
 keyBaseArray = list(keyBase)
 codeKeyArray = keyBaseArray
 
@@ -43,11 +43,11 @@ def main():
         choice = raw_input("\n1.Encrypt \n2.Decrpyt \n3.Exit \nEnter your choice : ")
         if choice=="1":
             answer=encrypt()
-            print 'Encrypted sentence is : ' + answer
+            print 'Encrypted sentence is : ' + '\033[1m\033[31m' + answer + '\033[0m'
 
         elif choice=="2":
             answer=decrypt()
-            print 'Decrypted sentence is : ' + answer
+            print 'Decrypted sentence is : ' + '\033[1m\033[32m' + answer + '\033[0m'
         elif choice=="3":
             exit()
         else:
