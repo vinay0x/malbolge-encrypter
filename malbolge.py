@@ -1,13 +1,22 @@
+import random
 keyBase = 'abcdefghijklmnopqrstuvwxyz'
 keyBaseArray = list(keyBase)
-codeKey = keyBase[::-1]
-codeKeyArray = list(codeKey)
+codeKeyArray = keyBaseArray
 
-def doWork(choice):
-    if choice =="1":
-        sentence = raw_input("What do you want to encrypt? : ")
-    elif choice=="2":
-        sentence = raw_input("What do you want to decrpyt? : ")
+
+def safeLock():
+    shuffleKey=raw_input('Enter the shuffleKey :')
+    random.seed(shuffleKey)
+    random.shuffle(codeKeyArray)
+    if (shuffleKey != '1996'):
+        print "shuffleKey accepted! Running..."
+        main()
+    else :
+        print "Initiating safeLock! Print random safe messages here! ;)"
+
+
+def encrypt():
+    sentence = raw_input("What do you want to encrypt? : ")
     charArray = list(sentence)
     for count1,elem in enumerate(charArray):
         for count2,elem2 in enumerate(keyBase):
@@ -16,19 +25,31 @@ def doWork(choice):
     string1=''.join(charArray)
     return string1
 
+def decrypt():
+    sentence = raw_input("What do you want to decrypt? : ")
+    charArray = list(sentence)
+    for count1,elem in enumerate(charArray):
+        for count2,elem2 in enumerate(codeKeyArray):
+            if elem == elem2:
+                keyBaseArray = list(keyBase)
+                charArray[count1]=keyBaseArray[count2]
+    string1=''.join(charArray)
+    return string1
+
+
 def main():
     choice = 0
     while (choice!='3'):
         choice = raw_input("\n1.Encrypt \n2.Decrpyt \n3.Exit \nEnter your choice : ")
         if choice=="1":
-            answer=doWork(choice)
+            answer=encrypt()
             print 'Encrypted sentence is : ' + answer
 
         elif choice=="2":
-            answer=doWork(choice)
+            answer=decrypt()
             print 'Decrypted sentence is : ' + answer
         elif choice=="3":
             exit()
         else:
             print("Invalid choice, please choose again\n")
-main()
+safeLock()
