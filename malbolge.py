@@ -1,5 +1,5 @@
 import random
-keyBase = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+keyBase = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()_+'
 keyBaseArray = list(keyBase)
 codeKeyArray = keyBaseArray
 
@@ -16,6 +16,8 @@ def safeLock():
         #Yet to add: A set of safe messages will be printed as the result of decryption
         print "Initiating safeLock! Print random safe messages here! ;)"
 
+def decipher():
+    #Code to find all possible shuffleKeys if a known encrypted-decrypted combination of words is entered
 def encrypt():
     sentence = raw_input("What do you want to encrypt? : ")
     charArray = list(sentence)
